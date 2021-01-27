@@ -1,0 +1,74 @@
+\hypertarget{diferensiasi-numerik}{%
+\chapter{Diferensiasi Numerik}\label{diferensiasi-numerik}}
+
+    \begin{quote}
+Diberikan fungsi \(f\), tentukan
+\(\displaystyle{\frac{d^n f(x)}{dx^n}}\).
+\end{quote}
+
+    Di dunia nyata, seringkali menghitung turunan diperlukan dalam rentang
+waktu yang singkat, meskipun harus mengorbankan akurasi. Ingat bahwa
+turunan pertama mewakili tren dan turunan kedua mewakili kecepatan tren
+berubah. Di kondisi yang lain, kita juga sering menemukan bahwa kita
+membutuhkan turunan, namun poin data yang dipunyai tidak banyak. Hanya
+titik per titik, sementara untuk melakukan \emph{interpolasi} maupun
+\emph{curve fitting} memakan \emph{resource} yang lebih banyak.
+
+    Ini mengakibatkan dibutuhkannya suatu konsep untuk menghitung fungsi
+dengan cepat.
+
+    Ingat bahwa dari definisi turunan, kita punya
+
+\[ f'(x) = \lim \limits_{x \to 0} \frac{f(x+h) - f(x)}{h} \]
+
+Jika kita mengambil nilai \(h\) tertentu, kita akan dapatkan \(f'(x)\)
+mendekati nilai pada ruas kanan (tanpa limit).
+
+    Sehingga kita bisa tulis ulang menjadi
+
+\[ f'(x)  \approx \frac{f(x+h) - f(x)}{h}. \]
+
+    Beda hingga atau \emph{finite difference} memiliki tiga metode.
+
+\begin{itemize}
+\tightlist
+\item
+  Beda maju
+\item
+  Beda mundur
+\item
+  Beda tengah
+\end{itemize}
+
+    \hypertarget{beda-hingga}{%
+\section{Beda Hingga}\label{beda-hingga}}
+
+    Dari persamaan sebelumnya \(f'(x) \approx \frac{f(x+h) - f(x)}{h}\),
+kita bisa memilih nilai \(h>0\). Ini menjadi metode beda maju.
+
+\[ f'(x) = \frac{f(x+h) - f(x)}{h}.\]
+
+    Dari persamaan sebelumnya \(f'(x) \approx \frac{f(x+h) - f(x)}{h}\),
+kita bisa memilih nilai \(h<0\). Ini menjadi metode beda maju. Jika kita
+pilih \(k = -h\)
+
+\[ f'(x) = \frac{f(x - k) - f(x)}{-k} = \frac{f(x) - f(x-k)}{k}\] atau
+cukup ditulis \[ f'(x) = \frac{f(x) - f(x-k)}{k}.\]
+
+    Kalau kita ganti simbol \(k\) dengan \(h\) didapat metode beda mundur.
+
+\[ f'(x) = \frac{f(x) - f(x-h)}{h}.\]
+
+    Untuk beda tengah agak berbeda. Kalau beda maju adalah melakukan
+aproksimasi maju satu step (satu \(h\)) dan beda mundur melakukan satu
+step ke belakang, kalau beda tengah ini melakukan aproksimasi dengan
+maju setengah step dan mundur setengah step. Ini didapat dengan
+menggabungkan beda maju dan beda mundur.
+
+\[ f'(x) = \frac12 \left(  \frac{f(x+h) - f(x)}{h} +  \frac{f(x) - f(x-h)}{h} \right) = \frac{f(x+h) - f(x-h)}{2h} \]
+
+    atau bila kita set \(2h \to h\), maka \(h \to \frac12 h\). Aproksimasi
+menjadi
+
+\[ f'(x) =   \frac{f(x + \frac12 h) - f(x- \frac 12 h)}{h} \]
+
